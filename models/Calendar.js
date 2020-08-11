@@ -13,12 +13,11 @@ Calendar.init(
 		},
 		employee_id: {
 			type: DataTypes.INTEGER,
-			allowNull: false,
-		},
-		references: {
-			model: 'employee',
-			key: 'id',
-		},
+			references: {
+				model: 'employee',
+				key: 'id'
+			}
+		}
 	},
 	{
 		sequelize,

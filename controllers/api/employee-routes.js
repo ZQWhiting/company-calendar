@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Calendar,
-                attributes: ['id', 'employee_id' ]
+                attributes: ['employee_id']
             }, 
         ]
     })
