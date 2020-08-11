@@ -16,7 +16,7 @@ Event.init(
 			allowNull: false,
 		},
 		description: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: false,
 		},
 		date: {
@@ -34,10 +34,10 @@ Event.init(
 		calendar_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
-		},
-		references: {
-			model: 'calendar',
-			key: 'id',
+			references: {
+				model: 'calendar',
+				key: 'id',
+			},
 		},
 	},
 	{
@@ -45,7 +45,7 @@ Event.init(
 		timestamps: false,
 		freezeTableName: true,
 		underscored: true,
-		modelName: 'calendar',
+		modelName: 'event',
 	}
 );
 
