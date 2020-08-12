@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Employee, Calendar } = require('../../models');
+const { Employee, Calendar, Event } = require('../../models');
 
 // GET /api/employee
 router.get('/', (req, res) => {
@@ -23,8 +23,16 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Calendar,
-                attributes: ['employee_id']
+                attributes: ['id', 'employee_id']
             }, 
+            {
+                model: Event,
+                attributes: ['id','title', 'description', 'date', 'start_time', 'end_time', 'calendar_id', 'employee_id'],
+                include: {
+                  model: Calendar,
+                  attributes: ['id']
+                }
+            },
         ]
     })
     .then(dbEmployeeData => {

@@ -33,6 +33,7 @@ Event.init(
 		},
 		employee_id: {
 			type: DataTypes.INTEGER,
+			allowNull: false,
 			references: {
 				model: 'employee',
 				key: 'id'

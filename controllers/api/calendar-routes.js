@@ -7,6 +7,14 @@ router.get('/', (req, res) => {
         attributes: ['id', 'employee_id'],
         include: [
             {
+                model: Event,
+                attributes: ['id','title', 'description', 'date', 'start_time', 'end_time', 'calendar_id', 'employee_id'],
+                include: {
+                    model: Employee,
+                    attributes: ['firstname', 'lastname', 'email']
+                }
+            },
+            {
                 model: Employee,
                 attributes: ['firstname', 'lastname', 'email']
             }
@@ -27,6 +35,14 @@ router.get('/:id', (req, res) => {
         },
         attributes: ['id', 'employee_id'],
         include: [
+            {
+                model: Event,
+                attributes: ['id','title', 'description', 'date', 'start_time', 'end_time', 'calendar_id', 'employee_id'],
+                include: {
+                    model: Employee,
+                    attributes: ['firstname', 'lastname', 'email']
+                }
+            },
             {
                 model: Employee,
                 attributes: ['firstname', 'lastname', 'email']
