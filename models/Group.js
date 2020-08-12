@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Calendar extends Model {}
+class Group extends Model {}
 
-Calendar.init(
+Group.init(
 	{
 		id: {
 			type: DataTypes.INTEGER,
@@ -11,22 +11,18 @@ Calendar.init(
 			primaryKey: true,
 			autoIncrement: true,
 		},
-		employee_id: {
-			type: DataTypes.INTEGER,
+		name: {
+			type: DataTypes.STRING,
 			allowNull: false,
-			references: {
-				model: 'employee',
-				key: 'id',
-			}
-		}
-	}
+		},
+	},
 	{
 		sequelize,
 		timestamps: false,
 		freezeTableName: true,
 		underscored: true,
-		modelName: 'calendar',
+		modelName: 'group',
 	}
 );
 
-module.exports = Calendar;
+module.exports = Group;
