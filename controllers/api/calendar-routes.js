@@ -4,17 +4,8 @@ const { Calendar, Employee, Event } = require('../../models');
 //get all calendars
 router.get('/', (req, res) => {
     Calendar.findAll({
-        order: [['created_at', 'DESC']],
         attributes: ['id', 'employee_id'],
         include: [
-            {
-                model: Event,
-                attributes: ['id', 'title', 'description', 'date', 'start_time', 'end_time'],
-                include: {
-                    model: Employee,
-                    attributes: ['firstname', 'lastname', 'email']
-                }
-            },
             {
                 model: Employee,
                 attributes: ['firstname', 'lastname', 'email']
@@ -34,16 +25,8 @@ router.get('/:id', (req, res) => {
         where: {
             id: req.params.id
         },
-        attributes: ['id', 'employee_id', 'created_at'],
+        attributes: ['id', 'employee_id'],
         include: [
-            {
-                model: Event,
-                attributes: ['id', 'title', 'description', 'date', 'start_time', 'end_time'],
-                include: {
-                    model: Employee,
-                    attributes: [ 'firstname', 'lastname', 'email' ]
-                }
-            },
             {
                 model: Employee,
                 attributes: ['firstname', 'lastname', 'email']
@@ -53,6 +36,38 @@ router.get('/:id', (req, res) => {
     .then(dbCalendarData => {
         if(!dbCalendarData) {
             res.status(404).json({ message: 'No calendar found with this id' })
+            return;
+        }
+        res.json(dbCalendarData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+//create a calendar
+router.post('/', (req, res) => {
+    Calendar.create({
+      employee_id: req.session.employee_id
+    })
+    .then(dbCalendarData => res.json(dbCalendarData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+//delete a calendar
+router.delete('/:id', (req, res) => {
+    Calendar.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbCalendarData => {
+        if (!dbCalendarData) {
+            res.status(404).json({ message: 'No calendar found with this id' });
             return;
         }
         res.json(dbCalendarData);

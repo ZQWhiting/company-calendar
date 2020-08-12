@@ -62,6 +62,35 @@ router.post('/', (req, res) => {
     });
 });
 
+// POST /api/employee/login
+router.post('/login', (req, res) => {
+    Employee.findOne({
+        where: {
+          email: req.body.email
+        }
+      }).then(dbEmployeeData => {
+        if (!dbEmployeeData) {
+          res.status(400).json({ message: 'No employee with that email address!' });
+          return;
+        }
+    
+        const validPassword = dbEmployeeData.checkPassword(req.body.password);
+  
+        if (!validPassword) {
+          res.status(400).json({ message: 'Incorrect password!' });
+          return;
+        }
+  
+          req.session.save(() => {
+              req.session.employee_id = dbEmployeeData.id;
+              req.session.email = dbEmployeeData.email;
+              req.session.loggedIn = true;
+      
+              res.json({ employee: dbEmployeeData, message: 'You are now logged in!' });
+        });
+    });
+})
+
 // PUT /api/employee/1
 router.put('/:id', (req, res) => {
     Employee.update(req.body, {

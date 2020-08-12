@@ -12,6 +12,16 @@ Calendar.belongsTo(Employee, {
 	foreignKey: 'employee_id',
 });
 
+// event belongs to employee
+// employee as many events
+Event.belongsTo(Employee, {
+	foreignKey: 'employee_id'
+});
+Employee.hasMany(Event, {
+	foreignKey: 'employee_id'
+});
+
+
 // Employee has one inbox
 // inbox belongs to one employee
 Employee.hasOne(Inbox);

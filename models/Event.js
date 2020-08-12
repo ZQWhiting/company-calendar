@@ -31,6 +31,13 @@ Event.init(
 			type: DataTypes.TIME,
 			allowNull: false,
 		},
+		employee_id: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: 'employee',
+				key: 'id'
+			}
+		},
 		calendar_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
