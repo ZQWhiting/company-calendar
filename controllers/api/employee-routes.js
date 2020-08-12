@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Employee, Calendar } = require('../../models');
+const { Employee, Calendar, Event } = require('../../models');
 
 // GET /api/employee
 router.get('/', (req, res) => {
@@ -23,8 +23,16 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Calendar,
-                attributes: ['employee_id']
+                attributes: ['id', 'employee_id']
             }, 
+            {
+                model: Event,
+                attributes: ['id','title', 'description', 'date', 'start_time', 'end_time', 'calendar_id', 'employee_id'],
+                include: {
+                  model: Calendar,
+                  attributes: ['id']
+                }
+            },
         ]
     })
     .then(dbEmployeeData => {
@@ -61,6 +69,35 @@ router.post('/', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+// POST /api/employee/login
+router.post('/login', (req, res) => {
+    Employee.findOne({
+        where: {
+          email: req.body.email
+        }
+      }).then(dbEmployeeData => {
+        if (!dbEmployeeData) {
+          res.status(400).json({ message: 'No employee with that email address!' });
+          return;
+        }
+    
+        const validPassword = dbEmployeeData.checkPassword(req.body.password);
+  
+        if (!validPassword) {
+          res.status(400).json({ message: 'Incorrect password!' });
+          return;
+        }
+  
+          req.session.save(() => {
+              req.session.employee_id = dbEmployeeData.id;
+              req.session.email = dbEmployeeData.email;
+              req.session.loggedIn = true;
+      
+              res.json({ employee: dbEmployeeData, message: 'You are now logged in!' });
+        });
+    });
+})
 
 // PUT /api/employee/1
 router.put('/:id', (req, res) => {

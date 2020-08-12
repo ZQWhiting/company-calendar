@@ -12,6 +12,25 @@ Calendar.belongsTo(Employee, {
 	foreignKey: 'employee_id',
 });
 
+// event belongs to employee
+// employee as many events
+Event.belongsTo(Employee, {
+	foreignKey: 'employee_id'
+});
+Employee.hasMany(Event, {
+	foreignKey: 'employee_id'
+});
+
+// calendar has many events
+// event belongs to calendar
+Calendar.hasMany(Event, {
+	foreignKey: 'calendar_id'
+});
+Event.belongsTo(Calendar, {
+	foreignKey: 'calendar_id',
+});
+
+
 // Employee has one inbox
 // inbox belongs to one employee
 Employee.hasOne(Inbox);
@@ -35,17 +54,6 @@ Employee.belongsToMany(Group, {
 Inbox.hasMany(Invite);
 Invite.belongsTo(Inbox, {
 	foreignKey: 'inbox_id',
-});
-
-// calendar has many events
-// event belongs to many calendars
-Calendar.belongsToMany(Event, {
-	through: 'calendar_event',
-	foreignKey: 'event_id',
-});
-Event.belongsToMany(Calendar, {
-	through: 'calendar_event',
-	foreignKey: 'calendar_id',
 });
 
 module.exports = {
