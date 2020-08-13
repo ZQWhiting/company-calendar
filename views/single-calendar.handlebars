@@ -2,13 +2,11 @@
   <div class="title">
     <h2>{{calendar.employee.firstname}} {{calendar.employee.lastname}}'s Schedule</h2>
   </div>
+  {{#each calendar}}
   <div>
-    {{calendar.events}}
-    <br>
-    {{calendar.events.description}}
-    <br>
-    {{calendar.event.date}} {{calendar.event.start_time}} {{calendar.event.end_time}}
+    {{@key}}: {{this.events.title}}
   </div>
+   {{/each}}
 </article>
 
 {{#if loggedIn}}
