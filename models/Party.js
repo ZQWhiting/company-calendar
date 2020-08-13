@@ -17,6 +17,10 @@ Party.init(
 		},
 	},
 	{
+		name: {
+			singular: 'party',
+			plural: 'parties',
+		},
 		sequelize,
 		timestamps: false,
 		freezeTableName: true,

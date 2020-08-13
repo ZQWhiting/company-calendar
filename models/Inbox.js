@@ -21,6 +21,10 @@ Inbox.init(
 		},
 	},
 	{
+		name: {
+			singular: 'inbox',
+			plural: 'inboxes',
+		},
 		sequelize,
 		timestamps: false,
 		freezeTableName: true,
