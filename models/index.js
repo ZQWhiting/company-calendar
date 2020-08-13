@@ -5,6 +5,7 @@ const Inbox = require('./Inbox');
 const Invite = require('./Invite');
 const Party = require('./Party');
 
+
 // Employee has one calendar
 // calendar belongs to one employee
 Employee.hasOne(Calendar);
