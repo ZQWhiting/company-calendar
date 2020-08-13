@@ -48,24 +48,57 @@ router.get('/:id', (req, res) => {
 
 //create an event
 router.post('/', (req, res) => {
-    // check the session
-    if (req.session) {
-      Event.create({
-        title: req.body.title,
-        description: req.body.description,
-        date: req.body.date,
-        start_time: req.body.start_time,
-        end_time: req.body.end_time,
-        // use the id from the session
-        employee_id: req.session.employee_id,
-        calendar_id: req.body.calendar_id
-    })
-    .then(dbEventData => res.json(dbEventData))
-    .catch(err => {
-        console.log(err);
-        res.status(400).json(err);
-    });
-}   
+	// check the session
+	if (req.session) {
+		Event.create({
+			title: req.body.title,
+			description: req.body.description,
+			date: req.body.date,
+			start_time: req.body.start_time,
+			end_time: req.body.end_time,
+			calendar_id: req.body.calendar_id,
+			// use the id from the session
+			employee_id: req.session.employee_id,
+		})
+			.then((dbEventData) => res.json(dbEventData))
+			.catch((err) => {
+				console.log(err);
+				res.status(400).json(err);
+			});
+	}
+});
+
+// add event to calendar
+router.post('/:id/calendar/:calendar_id', (req, res) => {
+	Event.findOne({
+		where: {
+			id: req.params.id,
+		},
+	})
+		.then((event) => {
+			if (!event) {
+				res.status(404).json({
+					message: 'No event found with this id',
+				});
+				return;
+			}
+			Calendar.findOne({ where: { id: req.params.calendar_id } }).then(
+				(calendar) => {
+					if (!calendar) {
+						res.status(404).json({
+							message: 'No calendar found with this id',
+						});
+						return;
+					}
+					calendar.addEvent(event);
+					res.status(200).json({ message: 'success' });
+				}
+			);
+		})
+		.catch((err) => {
+			console.log(err);
+			res.status(500).json(err);
+		});
 });
 
 //update an event

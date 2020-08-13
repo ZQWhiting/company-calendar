@@ -23,15 +23,11 @@ Employee.hasMany(Event, {
 
 // calendar has many events
 // event belongs to calendar
-Calendar.belongsToMany(Event, {
-	through: 'calendars_events',
-	timestamps: false,
+Calendar.hasMany(Event, {
 	foreignKey: 'calendar_id',
 });
-Event.belongsToMany(Calendar, {
-	through: 'calendars_events',
-	timestamps: false,
-	foreignKey: 'event_id',
+Event.belongsTo(Calendar, {
+	foreignKey: 'calendar_id',
 });
 
 // Employee has one inbox
