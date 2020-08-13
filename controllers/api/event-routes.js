@@ -54,6 +54,9 @@ router.post('/', (req, res) => {
 			date: req.body.date,
 			start_time: req.body.start_time,
 			end_time: req.body.end_time,
+			calendar_id: req.body.calendar_id,
+			// use the id from the session
+			employee_id: req.session.employee_id,
 		})
 			.then((dbEventData) => res.json(dbEventData))
 			.catch((err) => {

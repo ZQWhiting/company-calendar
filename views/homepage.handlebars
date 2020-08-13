@@ -1,0 +1,13 @@
+<ol class="post-list calendar-list">
+{{#each employees}}
+  <li>
+    <article class="post calendar">
+      <div class="meta">
+        {{firstname}} {{lastname}}
+        -
+        <a href="/calendar/{{calendar.id}}"> View Calendar</a>
+      </div>
+    </article>
+  </li>
+{{/each}}
+</ol>
