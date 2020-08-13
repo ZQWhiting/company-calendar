@@ -17,8 +17,8 @@ Calendar.init(
 			references: {
 				model: 'employee',
 				key: 'id',
-			}
-		}
+			},
+		},
 	},
 	{
 		sequelize,

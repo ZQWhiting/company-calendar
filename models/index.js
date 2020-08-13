@@ -3,7 +3,7 @@ const Calendar = require('./Calendar');
 const Event = require('./Event');
 const Inbox = require('./Inbox');
 const Invite = require('./Invite');
-const Group = require('./Group');
+const Party = require('./Party');
 
 
 // Employee has one calendar
@@ -16,21 +16,24 @@ Calendar.belongsTo(Employee, {
 // event belongs to employee
 // employee as many events
 Event.belongsTo(Employee, {
-	foreignKey: 'employee_id'
+	foreignKey: 'employee_id',
 });
 Employee.hasMany(Event, {
-	foreignKey: 'employee_id'
+	foreignKey: 'employee_id',
 });
 
 // calendar has many events
 // event belongs to calendar
-Calendar.hasMany(Event, {
-	foreignKey: 'calendar_id'
-});
-Event.belongsTo(Calendar, {
+Calendar.belongsToMany(Event, {
+	through: 'calendars_events',
+	timestamps: false,
 	foreignKey: 'calendar_id',
 });
-
+Event.belongsToMany(Calendar, {
+	through: 'calendars_events',
+	timestamps: false,
+	foreignKey: 'event_id',
+});
 
 // Employee has one inbox
 // inbox belongs to one employee
@@ -39,15 +42,17 @@ Inbox.belongsTo(Employee, {
 	foreignKey: 'employee_id',
 });
 
-// Group has many employees
+// Party has many employees
 // Employee belongs to many groups
-Group.belongsToMany(Employee, {
-	through: 'employee_group',
-	foreignKey: 'employee_id',
+Party.belongsToMany(Employee, {
+	through: 'employees_parties',
+	timestamps: false,
+	foreignKey: 'party_id',
 });
-Employee.belongsToMany(Group, {
-	through: 'employee_group',
-	foreignKey: 'group_id',
+Employee.belongsToMany(Party, {
+	through: 'employees_parties',
+	timestamps: false,
+	foreignKey: 'employee_id',
 });
 
 // Inbox has many invites
@@ -63,5 +68,5 @@ module.exports = {
 	Event,
 	Inbox,
 	Invite,
-	Group,
+	Party,
 };
