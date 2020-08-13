@@ -33,13 +33,6 @@ Employee.init(
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			validate: {
-				isEmail: true,
-			},
-		},
-		email: {
-			type: DataTypes.STRING,
-			allowNull: false,
 			unique: true,
 			validate: {
 			  isEmail: true

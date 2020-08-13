@@ -65,7 +65,7 @@ router.get('/:id', (req, res) => {
 //create a calendar
 router.post('/', (req, res) => {
     Calendar.create({
-      employee_id: req.session.employee_id
+      employee_id: req.body.employee_id
     })
     .then(dbCalendarData => res.json(dbCalendarData))
     .catch(err => {
