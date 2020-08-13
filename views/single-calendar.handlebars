@@ -3,9 +3,9 @@
     <h2>{{calendar.employee.firstname}} {{calendar.employee.lastname}}'s Schedule</h2>
   </div>
   <div>
-    {{calendar.event.title}}
+    {{calendar.events}}
     <br>
-    {{calendar.event.description}}
+    {{calendar.events.description}}
     <br>
     {{calendar.event.date}} {{calendar.event.start_time}} {{calendar.event.end_time}}
   </div>
@@ -32,5 +32,6 @@
   </div>
 </form>
 {{/if}}
-
+{{#if loggedIn}}
 <script src="/javascript/event.js"></script>
+{{/if}}

@@ -183,3 +183,38 @@
       margin-top: 5px;
       margin-bottom: 2px;
   }
+
+  .login-form, .signup-form, .event-form {
+    margin-bottom: 2%;
+    line-height: 150%;
+    border: 1px solid darkgrey;
+    border-radius: 5px;
+    box-shadow: 4px 8px 15px #888888;;
+    padding: 20px;
+  }
+
+  nav {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  nav button {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: white;
+  }
+
+  header {
+    background-color: #225ca3;
+    width: 100%;
+  }
+
+  header a {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: white;
+  }
+
+  a:hover {
+    color: #3486eb;
+  }

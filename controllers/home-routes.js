@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     })
       .then(dbEmployeeData => {
         const employees = dbEmployeeData.map(employee => employee.get({ plain: true }));
-        res.render('homepage', { employees });
+        res.render('homepage', { employees, loggedIn: req.session.loggedIn });
       })
       .catch(err => {
         console.log(err);
@@ -44,7 +44,8 @@ router.get('/calendar/:id', (req, res) => {
         id: req.params.id
       },
       attributes: [
-        'id'
+        'id',
+        'employee_id'
       ],
       include: [
         {
@@ -52,12 +53,12 @@ router.get('/calendar/:id', (req, res) => {
           attributes: ['id', 'title', 'description', 'date', 'start_time', 'end_time', 'calendar_id', 'employee_id'],
           include: {
             model: Employee,
-            attributes: ['firstname', 'lastname']
+            attributes: ['id', 'email','firstname', 'lastname']
           }
         },
         {
           model: Employee,
-          attributes: ['firstname', 'lastname']
+          attributes: ['id', 'email', 'firstname', 'lastname']
         }
       ]
     })
