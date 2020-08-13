@@ -32,8 +32,8 @@ module.exports = function(app) {
   app.post("/api/login", function(req, res) {
     db.User.findOne({
       where: {
-        username: req.body.username,
-        password: req.body.password
+        username: req.body.email,
+      
       }
     }).then(function(dbUser) {
       //console.log(dbUser);
