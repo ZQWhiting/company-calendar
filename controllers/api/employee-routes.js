@@ -57,6 +57,9 @@ router.post('/', (req, res) => {
         password: req.body.password
     })
     .then(dbEmployeeData => {
+        Calendar.create({
+            employee_id: dbEmployeeData.id,
+        });
         req.session.save(() => {
             req.session.employee_id = dbEmployeeData.id;
             req.session.email = dbEmployeeData.email;
