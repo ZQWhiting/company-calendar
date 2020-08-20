@@ -1,6 +1,6 @@
 <article class="calendar">
   <div class="title">
-    <h2>{{calendar.employee.firstname}} {{calendar.employee.lastname}}'s Schedule</h2>
+    <h2>Employee's Schedule</h2>
   </div>
   <div>
     {{#each calendar}}
@@ -9,8 +9,8 @@
     <h4>{{title}}</h4><p class="event-id">{{id}}</p>
     <p>{{description}}</p>
     <p>{{format_date date}}</p>
-    <p>{{start_time}} {{end_time}}</p>
-    <button type="submit" class="delete-event-btn">Delete</button>
+    <p>{{start_time}} {{end_time}} {{employee.firstname}}</p>
+    <button type="submit" class="delete-event-btn" data-id={{id}}>Delete</button>
     </div>
     {{/each}}
     {{/each}}
@@ -40,8 +40,6 @@
 {{/if}}
 
 {{#if loggedIn}}
-<script src="/javascript/event.js"></script>
+<script src="/javascript/add-event.js"></script>
 <script src="/javascript/delete-event.js"></script>
-{{else}}
-<h2>Log in to start adding events to your calendar!</h2>
 {{/if}}

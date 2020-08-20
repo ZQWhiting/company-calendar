@@ -4,7 +4,7 @@ async function deleteFormHandler(event) {
     const employeeCalendarId = window.location.toString().split('/')[window.location.toString().split('/').length - 1];
     console.log(employeeCalendarId)
 
-    const id = document.querySelector('.event-id').textContent;
+    const id = event.target.getAttribute("data-id")
     console.log(id)
 
     const response = await fetch(`/api/event/${id}`, {
@@ -24,4 +24,7 @@ async function deleteFormHandler(event) {
     }
 }
   
-document.querySelector('.delete-event-btn').addEventListener('click', deleteFormHandler);
+var btnDelete= document.getElementsByClassName('delete-event-btn');
+for (var i=0;i<btnDelete.length;i++){
+  btnDelete[i].addEventListener('click', deleteFormHandler);
+}
