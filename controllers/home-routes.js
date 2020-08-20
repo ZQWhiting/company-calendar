@@ -55,10 +55,6 @@ router.get('/calendar/:id', (req, res) => {
             model: Employee,
             attributes: ['id', 'email','firstname', 'lastname']
           }
-        },
-        {
-          model: Employee,
-          attributes: ['id', 'email', 'firstname', 'lastname']
         }
       ]
     })
@@ -70,6 +66,7 @@ router.get('/calendar/:id', (req, res) => {
 
     // serialize the data
     const calendar = dbCalendarData.get({ plain: true });
+    console.log(calendar);
 
     // pass data to template
     res.render('single-calendar', { calendar, loggedIn: req.session.loggedIn });

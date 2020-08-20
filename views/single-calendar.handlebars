@@ -1,16 +1,24 @@
-<article class="post calendar">
+<article class="calendar">
   <div class="title">
-    <h2>{{calendar.employee.firstname}} {{calendar.employee.lastname}}'s Schedule</h2>
+    <h2>Employee's Schedule</h2>
   </div>
-  {{#each calendar}}
   <div>
-    {{@key}}: {{this.events.title}}
+    {{#each calendar}}
+    {{#each this}}
+    <div class="event-form">
+    <h4>{{title}}</h4><p class="event-id">{{id}}</p>
+    <p>{{description}}</p>
+    <p>{{format_date date}}</p>
+    <p>{{start_time}} {{end_time}} {{employee.firstname}}</p>
+    <button type="submit" class="delete-event-btn" data-id={{id}}>Delete</button>
+    </div>
+    {{/each}}
+    {{/each}}
   </div>
-   {{/each}}
 </article>
 
 {{#if loggedIn}}
-<form class="event-form">
+<form class="add-event-form">
   <div>
     <h4>Title</h4>
     <input name="event-title">
@@ -30,6 +38,8 @@
   </div>
 </form>
 {{/if}}
+
 {{#if loggedIn}}
-<script src="/javascript/event.js"></script>
+<script src="/javascript/add-event.js"></script>
+<script src="/javascript/delete-event.js"></script>
 {{/if}}

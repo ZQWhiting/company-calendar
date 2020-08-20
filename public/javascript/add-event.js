@@ -35,4 +35,4 @@ async function eventFormHandler(event) {
     }
 }
   
-document.querySelector('.event-form').addEventListener('submit', eventFormHandler);
+document.querySelector('.add-event-form').addEventListener('submit', eventFormHandler);
