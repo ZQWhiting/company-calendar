@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Event, Employee } = require('../../models');
 const session = require('express-session');
+const withAuth = require('../../utils/auth');
 
 // get event
 router.get('/', (req, res) => {
@@ -68,7 +69,7 @@ router.get('/:id', (req, res) => {
 });
 
 //create an event
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
 	// check the session
 	if (req.session) {
 		Event.create({
@@ -90,7 +91,7 @@ router.post('/', (req, res) => {
 });
 
 // add event to calendar
-router.post('/:id/calendar/:calendar_id', (req, res) => {
+router.post('/:id/calendar/:calendar_id', withAuth, (req, res) => {
 	Event.findOne({
 		where: {
 			id: req.params.id,
@@ -123,7 +124,7 @@ router.post('/:id/calendar/:calendar_id', (req, res) => {
 });
 
 //update an event
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
 	Event.update(
 		{
 			title: req.body.title,
@@ -154,7 +155,7 @@ router.put('/:id', (req, res) => {
 });
 
 //delete an event
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
 	Event.destroy({
 		where: {
 			id: req.params.id,

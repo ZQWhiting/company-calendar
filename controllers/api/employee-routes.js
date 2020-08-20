@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Employee, Calendar, Event } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 // GET /api/employee
 router.get('/', (req, res) => {
@@ -129,7 +130,7 @@ router.post('/logout', (req, res) => {
 });
 
 // PUT /api/employee/1
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
 	Employee.update(req.body, {
 		individualHooks: true,
 		where: {
@@ -152,7 +153,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE /api/employee/1
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
 	Employee.destroy({
 		where: {
 			id: req.params.id,
