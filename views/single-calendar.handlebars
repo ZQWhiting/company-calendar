@@ -10,10 +10,8 @@
       <p>{{description}}</p>
       <p>{{format_date date}}</p>
       <p>{{start_time}} {{end_time}} {{employee.firstname}}</p>
-      {{#if loggedIn}}
-      {{#if (user_authentication user_id calendar.employee_id)}}
+      {{#if (user_authentication ../user_id ../calendar.employee_id)}}
       <button type="submit" class="delete-event-btn" data-id={{id}}>Delete</button>
-      {{/if}}
       {{/if}}
     </div>
     {{/each}}

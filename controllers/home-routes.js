@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Employee, Calendar, Event } = require('../models');
+const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
 	Employee.findAll({
