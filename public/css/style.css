@@ -109,28 +109,27 @@
     color: #3486eb;
   }
   
-  .delete-post-btn {
+  .delete-event-btn {
     background-color: #d41414;
   }
   
-  .delete-post-btn:hover {
+  .delete-event-btn:hover {
     background-color: #ff643d;
   }
   
-  .post {
+  .calendar {
     margin-bottom: 2%;
     line-height: 150%;
   }
   
-  .post .title span {
+  .calendar .title span {
     font-style: italic;
     font-size: 90%;
     color: #7d7d7d;
   }
   
-  .edit-link {
-    display: block;
-    margin: -1.5% 0 2% 0;
+  .update-btn {
+    display: inline;
   }
   
   .upvote-btn {
@@ -142,7 +141,7 @@
     background-color: #1f9c13;
   }
   
-  .event-form {
+  .event-form, .add-event-form {
     border: 1px solid #225ca3;
     border-radius: 5px;
     padding: 15px;
@@ -184,7 +183,7 @@
       margin-bottom: 2px;
   }
 
-  .login-form, .signup-form, .event-form {
+  .login-form, .signup-form, .event-form, .add-event-form {
     margin-bottom: 2%;
     line-height: 150%;
     border: 1px solid darkgrey;
@@ -217,4 +216,8 @@
 
   a:hover {
     color: #3486eb;
+  }
+
+  .event-id {
+    display: none;
   }
