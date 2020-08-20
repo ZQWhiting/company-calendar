@@ -3,21 +3,25 @@
     <h2>Employee's Schedule</h2>
   </div>
   <div>
-    {{#each calendar}}
-    {{#each this}}
+    {{#each calendar.events}}
     <div class="event-form">
-    <h4>{{title}}</h4><p class="event-id">{{id}}</p>
-    <p>{{description}}</p>
-    <p>{{format_date date}}</p>
-    <p>{{start_time}} {{end_time}} {{employee.firstname}}</p>
-    <button type="submit" class="delete-event-btn" data-id={{id}}>Delete</button>
+      <h4>{{title}}</h4>
+      <p class="event-id">{{id}}</p>
+      <p>{{description}}</p>
+      <p>{{format_date date}}</p>
+      <p>{{start_time}} {{end_time}} {{employee.firstname}}</p>
+      {{#if loggedIn}}
+      {{#if (user_authentication user_id calendar.employee_id)}}
+      <button type="submit" class="delete-event-btn" data-id={{id}}>Delete</button>
+      {{/if}}
+      {{/if}}
     </div>
-    {{/each}}
     {{/each}}
   </div>
 </article>
 
 {{#if loggedIn}}
+{{#if (user_authentication user_id calendar.employee_id)}}
 <form class="add-event-form">
   <div>
     <h4>Title</h4>
@@ -38,8 +42,11 @@
   </div>
 </form>
 {{/if}}
+{{/if}}
 
 {{#if loggedIn}}
+{{#if (user_authentication user_id calendar.employee_id)}}
 <script src="/javascript/add-event.js"></script>
 <script src="/javascript/delete-event.js"></script>
+{{/if}}
 {{/if}}

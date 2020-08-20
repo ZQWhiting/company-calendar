@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Calendar, Employee, Event } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 //get all calendars
 router.get('/', (req, res) => {
@@ -63,7 +64,7 @@ router.get('/:id', (req, res) => {
 });
 
 //create a calendar
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     Calendar.create({
       employee_id: req.body.employee_id
     })
@@ -75,7 +76,7 @@ router.post('/', (req, res) => {
 });
 
 //delete a calendar
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Calendar.destroy({
         where: {
             id: req.params.id
