@@ -24,23 +24,8 @@ router.get('/:id', (req, res) => {
 		include: [
 			{
 				model: Calendar,
-				attributes: ['id', 'employee_id'],
-			},
-			{
-				model: Event,
-				attributes: [
-					'id',
-					'title',
-					'description',
-					'date',
-					'start_time',
-					'end_time',
-					'calendar_id',
-					'employee_id',
-				],
 				include: {
-					model: Calendar,
-					attributes: ['id'],
+					model: Event,
 				},
 			},
 		],
@@ -71,6 +56,7 @@ router.post('/', (req, res) => {
 		.then((dbEmployeeData) => {
 			Calendar.create({
 				employee_id: dbEmployeeData.id,
+				date: `${new Date().getMonth()}/${new Date().getDay()}/${new Date().getFullYear()}`,
 			});
 			req.session.employee_id = dbEmployeeData.id;
 			req.session.email = dbEmployeeData.email;

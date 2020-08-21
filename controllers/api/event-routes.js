@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
 			'id',
 			'title',
 			'description',
-			'date',
 			'start_time',
 			'end_time',
 			'calendar_id',
@@ -40,7 +39,6 @@ router.get('/:id', (req, res) => {
 			'id',
 			'title',
 			'description',
-			'date',
 			'start_time',
 			'end_time',
 			'calendar_id',
@@ -75,7 +73,6 @@ router.post('/', withAuth, (req, res) => {
 		Event.create({
 			title: req.body.title,
 			description: req.body.description,
-			date: req.body.date,
 			start_time: req.body.start_time,
 			end_time: req.body.end_time,
 			calendar_id: req.body.calendar_id,
@@ -129,7 +126,6 @@ router.put('/:id', withAuth, (req, res) => {
 		{
 			title: req.body.title,
 			description: req.body.description,
-			date: req.body.date,
 			start_time: req.body.start_time,
 			end_time: req.body.end_time,
 		},

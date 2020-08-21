@@ -1,0 +1,54 @@
+<div class='item'>
+    <h2>Calendars</h2>
+    {{#each employee.calendars}}
+    <div class='item'>
+        <h3>{{format_date date}} <button type="submit" class="delete-calendar-btn" data-id={{id}}>Delete
+                Calendar</button></h3>
+        <h4>Events</h4>
+        {{#each events}}
+        <p>{{title}} <button type="submit" class="delete-event-btn" data-id={{id}}>Delete Event</button></p>
+        {{/each}}
+    </div>
+    {{/each}}
+</div>
+
+<form class='item add-calendar-form'>
+    <h2>Add Calendar</h2>
+    <div>
+        <h4>Date</h4>
+        <input type="date" name="calendar-date">
+    </div>
+    <div>
+        <button>Add Date</button>
+    </div>
+</form>
+
+<form class="add-event-form">
+    <h2>Add Event</h2>
+    <div>
+        <h4>Title</h4>
+        <input name="event-title">
+        <br>
+        <h4>Description</h4>
+        <textarea name="event-description"></textarea>
+        <h4>Calendar</h4>
+        <select name="event-calendar">
+            {{#each employee.calendars}}
+            <option value="{{id}}">{{format_date date}}</option>
+            {{/each}}
+        </select>
+        <h4>Start Time</h4>
+        <input name="event-start_time">
+        <h4>End Time</h4>
+        <input name="event-end_time">
+        <br>
+    </div>
+    <div>
+        <button>Add Event</button>
+    </div>
+</form>
+
+<script src="/javascript/add-event.js"></script>
+<script src="/javascript/add-calendar.js"></script>
+<script src="/javascript/delete-event.js"></script>
+<script src="/javascript/delete-calendar.js"></script>
