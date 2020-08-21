@@ -5,21 +5,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Company Calendar</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
   <header>
-    <h1>
-      <a href="/">Company Calendar</a>
-    </h1>
-    <nav>
-      {{#if loggedIn}}
-      <a href="/dashboard">Dashboard</a>
-      <button id="logout">Logout</button>
-      {{else}}
-      <a href="/login">Login</a>
-      {{/if}}
+    <nav class="light-blue lighten-1 p-15">
+      <div class='nav-wrapper'>
+        <a class='brand-logo' href="/">Company Calendar</a>
+        <ul class='right hide-on-med-and-down'>
+          {{#if loggedIn}}
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><button id="logout" class="btn-no-style">Logout</button></li>
+          {{else}}
+          <li><a href="/login">Login</a></li>
+          {{/if}}
+        </ul>
+        <ul id="nav-mobile" class="sidenav show-on-med">
+          {{#if loggedIn}}
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><button id="logout" class="btn-no-style">Logout</button></li>
+          {{else}}
+          <li><a href="/login">Login</a></li>
+          {{/if}}
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger">
+          <i class="material-icons">menu</i>
+        </a>
+      </div>
     </nav>
   </header>
   <div class="wrapper">
@@ -32,7 +47,7 @@
   </div>
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   {{/if}}
 </body>
-
 </html>

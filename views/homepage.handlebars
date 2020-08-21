@@ -1,11 +1,10 @@
-<ol class="post-list calendar-list">
+<ol>
 {{#each employees}}
-  <li>
-    <article class="post calendar">
-      <div class="meta">
+  <li class='card-panel orange white-text'>
+    <article>
+      <div>
         {{firstname}} {{lastname}}
-        -
-        <a href="/calendar/{{calendar.id}}"> View Calendar</a>
+        <a class="right light-blue btn" href="/dashboard/{{employee.id}}"><i class="material-icons left">perm_contact_calendar</i> View Calendar</a>
       </div>
     </article>
   </li>

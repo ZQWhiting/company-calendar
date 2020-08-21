@@ -1,34 +1,39 @@
-<div class='item'>
-    <h2>Calendars</h2>
+<h2 class="orange-text">Calendars</h2>
+<div>
     {{#each employee.calendars}}
-    <div class='item'>
-        <h3>{{format_date date}} <button type="submit" class="delete-calendar-btn" data-id={{id}}>Delete
+    <div class="item">
+        <h3>{{format_date date}} <button type="submit" class="delete-calendar-btn right btn-small light-blue" data-id={{id}}>Delete
                 Calendar</button></h3>
-        <h4>Events</h4>
+        {{#if events}}
+        <h4>Events:</h4>
+        <div class="event">
         {{#each events}}
-        <p>{{title}} <button type="submit" class="delete-event-btn" data-id={{id}}>Delete Event</button></p>
+        <p>{{title}} <button type="submit" class="delete-event-btn btn-small red right" data-id={{id}}>Delete Event</button></p>
+        <p>Description: {{description}}</p>
+        <p>Time: {{start_time}}-{{end_time}}</p>
         {{/each}}
+        </div>
+        {{/if}}
     </div>
     {{/each}}
 </div>
 
+<h2 class="orange-text">Add Calendar</h2>
 <form class='item add-calendar-form'>
-    <h2>Add Calendar</h2>
     <div>
         <h4>Date</h4>
         <input type="date" name="calendar-date">
     </div>
     <div>
-        <button>Add Date</button>
+        <button class="btn-small light-blue">Add Date</button>
     </div>
 </form>
 
-<form class="add-event-form">
-    <h2>Add Event</h2>
+<h2 class="orange-text">Add Event</h2>
+<form class="add-event-form form">
     <div>
         <h4>Title</h4>
         <input name="event-title">
-        <br>
         <h4>Description</h4>
         <textarea name="event-description"></textarea>
         <h4>Calendar</h4>
@@ -44,7 +49,7 @@
         <br>
     </div>
     <div>
-        <button>Add Event</button>
+        <button class="btn-small light-blue">Add Event</button>
     </div>
 </form>
 
