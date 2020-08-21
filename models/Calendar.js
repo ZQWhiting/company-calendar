@@ -11,6 +11,11 @@ Calendar.init(
 			primaryKey: true,
 			autoIncrement: true,
 		},
+		date: {
+			type: DataTypes.DATEONLY,
+			allowNull: false,
+			unique: true,
+		},
 		employee_id: {
 			type: DataTypes.INTEGER,
 			allowNull: false,

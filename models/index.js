@@ -7,7 +7,7 @@ const Party = require('./Party');
 
 // Employee has one calendar
 // calendar belongs to one employee
-Employee.hasOne(Calendar);
+Employee.hasMany(Calendar);
 Calendar.belongsTo(Employee, {
 	foreignKey: 'employee_id',
 });

@@ -19,10 +19,6 @@ Event.init(
 			type: DataTypes.TEXT,
 			allowNull: false,
 		},
-		date: {
-			type: DataTypes.DATEONLY,
-			allowNull: false,
-		},
 		start_time: {
 			type: DataTypes.TIME,
 			allowNull: false,

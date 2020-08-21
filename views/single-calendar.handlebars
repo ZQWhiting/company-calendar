@@ -18,33 +18,6 @@
   </div>
 </article>
 
-{{#if loggedIn}}
 {{#if (user_authentication user_id calendar.employee_id)}}
-<form class="add-event-form">
-  <div>
-    <h4>Title</h4>
-    <input name="event-title">
-    <br>
-    <h4>Description</h4>
-    <textarea name="event-description"></textarea>
-    <h4>Date</h4>
-    <input name="event-date">
-    <h4>Start Time</h4>
-    <input name="event-start_time">
-    <h4>End Time</h4>
-    <input name="event-end_time">
-    <br>
-  </div>
-  <div>
-    <button type="submit">Add Event</button>
-  </div>
-</form>
-{{/if}}
-{{/if}}
-
-{{#if loggedIn}}
-{{#if (user_authentication user_id calendar.employee_id)}}
-<script src="/javascript/add-event.js"></script>
 <script src="/javascript/delete-event.js"></script>
-{{/if}}
 {{/if}}
