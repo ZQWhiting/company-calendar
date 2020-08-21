@@ -37,7 +37,7 @@
         <h4>Description</h4>
         <textarea name="event-description"></textarea>
         <h4>Calendar</h4>
-        <select name="event-calendar">
+        <select class="browser-default" name="event-calendar">
             {{#each employee.calendars}}
             <option value="{{id}}">{{format_date date}}</option>
             {{/each}}
@@ -52,6 +52,7 @@
         <button class="btn-small light-blue">Add Event</button>
     </div>
 </form>
+
 
 <script src="/javascript/add-event.js"></script>
 <script src="/javascript/add-calendar.js"></script>

@@ -12,42 +12,32 @@
 
 <body>
   <header>
-    <nav class="light-blue lighten-1 p-15">
-      <div class='nav-wrapper'>
-        <a class='brand-logo' href="/">Company Calendar</a>
-        <ul class='right hide-on-med-and-down'>
+    <nav class="light-blue lighten-1 nav-list">
+      <ul class="nav-links">
+          <li><a class="logo" href="/">Company Calendar</a></li>
           {{#if loggedIn}}
           <li><a href="/dashboard">Dashboard</a></li>
           <li><button id="logout" class="btn-no-style">Logout</button></li>
           {{else}}
           <li><a href="/login">Login</a></li>
           {{/if}}
-        </ul>
-        <ul id="nav-mobile" class="sidenav show-on-med">
-          {{#if loggedIn}}
-          <li><a href="/dashboard">Dashboard</a></li>
-          <li><button id="logout" class="btn-no-style">Logout</button></li>
-          {{else}}
-          <li><a href="/login">Login</a></li>
-          {{/if}}
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger">
-          <i class="material-icons">menu</i>
-        </a>
-      </div>
+      </ul>
     </nav>
   </header>
+
   <div class="wrapper">
     <main>
       {{{ body }}}
     </main>
-    <footer>
-      Thanks for using Company Calendar!
-    </footer>
   </div>
+  
+  <footer>
+    Thanks for using Company Calendar!
+  </footer>
+
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   {{/if}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 * {
 	box-sizing: border-box;
 }
-
 body,
 html {
 	height: 100%;
@@ -10,11 +9,18 @@ html {
 	font-family: sans-serif;
 	color: #333;
 }
-nav{
-	padding-left: 15px;
-	padding-right: 15px;
-}
 
+.nav-list {
+	float: left;
+  }
+  
+.nav-links {
+	display: block;
+}
+.logo {
+	font-size: 18px;
+	font-weight: 900;
+}
 h2 {
 	font-size: 28px;
 }
@@ -57,7 +63,7 @@ input {
 textarea:focus,
 input:focus {
 	outline: none;
-	border: 1px solid #ff9800 !important;
+
 }
 
 textarea {
@@ -103,30 +109,16 @@ main {
 	background-color: #d41414;
 }
 
-.delete-event-btn:hover {
-	background-color: #ff643d;
-}
-
 .calendar .title span {
 	font-style: italic;
 	font-size: 90%;
 	color: #7d7d7d;
 }
 
-.update-btn {
-	display: inline;
-}
-
-.new-post-form input {
-	width: 300px;
-}
-
-.edit-post-form {
-	margin-bottom: 5%;
-}
 
 footer {
-	border-top: 1px solid #ccc;
+	background-color: #ff9800;
+	color: white;
 	display: flex;
 	justify-content: center;
 	padding: 1%;
@@ -153,9 +145,13 @@ h4 {
 .event-id {
 	display: none;
 }
-
-@media screen and (min-width: 480px) {
-	.brand-logo {
-	  font-size: 12px;
-	}
+.employee-list {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+}
+.employee-list-item {
+	list-style: none;
+	padding: 15px !important;
+	font-size: 18px !important;
 }
