@@ -12,9 +12,12 @@ Calendar.init(
 			autoIncrement: true,
 		},
 		date: {
-			type: DataTypes.DATEONLY,
+			type: DataTypes.STRING,
 			allowNull: false,
 			unique: true,
+			validate: {
+				isDate: true,
+			},
 		},
 		employee_id: {
 			type: DataTypes.INTEGER,

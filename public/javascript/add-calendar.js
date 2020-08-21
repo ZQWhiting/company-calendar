@@ -1,9 +1,9 @@
 async function calendarFormHandler(event) {
 	event.preventDefault();
 
-	const date = new Date(
-		document.querySelector('input[name="calendar-date"]').value
-	);
+	let date = document
+		.querySelector('input[name="calendar-date"]')
+		.value.replace(/-/g, '/');
 	console.log(date);
 
 	if (date) {
@@ -18,7 +18,7 @@ async function calendarFormHandler(event) {
 		});
 
 		if (response.ok) {
-			document.location.reload();
+			// document.location.reload();
 		} else {
 			alert(response.statusText);
 		}

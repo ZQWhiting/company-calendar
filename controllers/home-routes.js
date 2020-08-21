@@ -102,14 +102,15 @@ router.get('/dashboard', (req, res) => {
 	}).then((dbEmployeeData) => {
 		// serialize the data
 		const employee = dbEmployeeData.get({ plain: true });
-		console.log(employee, employee.calendars);
+		console.log(employee);
 
 		if (!employee.calendars.length) {
 			Calendar.create({
 				employee_id: req.session.employee_id,
-				date: `${new Date().getMonth()}/${new Date().getDay()}/${new Date().getFullYear()}`,
+				date: new Date().toISOString().slice(0, 10),
+			}).then(() => {
+				res.redirect('/dashboard');
 			});
-			res.redirect('/dashboard');
 			return;
 		}
 
