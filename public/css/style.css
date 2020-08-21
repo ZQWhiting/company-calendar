@@ -1,7 +1,6 @@
 * {
 	box-sizing: border-box;
 }
-
 body,
 html {
 	height: 100%;
@@ -11,48 +10,60 @@ html {
 	color: #333;
 }
 
-a {
-	text-decoration: none;
-	color: #225ca3;
-	font-weight: bold;
-	transition: color 0.1s;
+.nav-list {
+	float: left;
+  }
+  
+.nav-links {
+	display: block;
+}
+.logo {
+	font-size: 18px;
+	font-weight: 900;
+}
+h2 {
+	font-size: 28px;
 }
 
-a:hover {
-	color: #3486eb;
+h3 {
+	font-size: 24px;
 }
 
-button {
-	background-color: #225ca3;
-	border: 0;
-	padding: 1%;
-	color: white;
-	font-weight: bold;
-	transition: background-color 0.1s;
-	cursor: pointer;
+h4 {
+	font-size: 20px;
+	padding-top: 15px;
+}
+
+p {
+	font-size: 18px;
+}
+
+.card {
+	padding: 20px;
+	border: 1px solid lightgrey;
 	border-radius: 5px;
 }
 
-button:hover {
-	background-color: #3486eb;
-}
-
-.post-list {
-	margin: 0;
-	padding: 0;
+.event {
+	padding: 15px;
+	border-top: 1px solid lightgrey;
+	border-bottom: 1px solid lightgrey;
+	font-style: italic;
+	margin-top: 15px;
 }
 
 textarea,
 input {
-	padding: 0.5%;
+	padding: 5px;
 	border-radius: 5px;
 	border: 1px solid #ccc;
 }
 
+
 textarea:focus,
 input:focus {
 	outline: none;
-	border: 1px solid #3486eb;
+
 }
 
 textarea {
@@ -77,18 +88,6 @@ form label {
 	flex-direction: column;
 }
 
-header {
-	border-bottom: 1px solid #ccc;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0 1%;
-}
-
-header h1 {
-	font-size: 1em;
-}
-
 main {
 	flex: 1;
 	padding: 2% 4%;
@@ -100,29 +99,14 @@ main {
 	padding: 0;
 	cursor: pointer;
 	text-decoration: none;
-	color: #225ca3;
+	color: white;
 	font-size: 100%;
-	font-weight: bold;
 	transition: color 0.1s;
 	margin-left: 16px;
 }
 
-.btn-no-style:hover {
-	background: none;
-	color: #3486eb;
-}
-
 .delete-event-btn {
 	background-color: #d41414;
-}
-
-.delete-event-btn:hover {
-	background-color: #ff643d;
-}
-
-.calendar {
-	margin-bottom: 2%;
-	line-height: 150%;
 }
 
 .calendar .title span {
@@ -131,51 +115,10 @@ main {
 	color: #7d7d7d;
 }
 
-.update-btn {
-	display: inline;
-}
-
-.upvote-btn {
-	background-color: #197d0f;
-	transition: background-color 0.1s;
-}
-
-.upvote-btn:hover {
-	background-color: #1f9c13;
-}
-
-.event-form,
-.add-event-form {
-	border: 1px solid #225ca3;
-	border-radius: 5px;
-	padding: 15px;
-}
-
-.comment {
-	padding: 1%;
-	margin-bottom: 1%;
-}
-
-.comment:nth-child(odd) {
-	background-color: #fff5eb;
-}
-
-.comment .meta {
-	font-size: 90%;
-	margin-bottom: 0.5%;
-	opacity: 0.6;
-}
-
-.new-post-form input {
-	width: 300px;
-}
-
-.edit-post-form {
-	margin-bottom: 5%;
-}
 
 footer {
-	border-top: 1px solid #ccc;
+	background-color: #ff9800;
+	color: white;
 	display: flex;
 	justify-content: center;
 	padding: 1%;
@@ -194,38 +137,21 @@ h4 {
 .item {
 	margin-bottom: 2%;
 	line-height: 150%;
-	border: 1px solid darkgrey;
 	border-radius: 5px;
 	box-shadow: 4px 8px 15px #888888;
 	padding: 20px;
 }
 
-nav {
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
-
-nav button {
-	padding-left: 15px;
-	padding-right: 15px;
-	color: white;
-}
-
-header {
-	background-color: #225ca3;
-	width: 100%;
-}
-
-header a {
-	padding-left: 15px;
-	padding-right: 15px;
-	color: white;
-}
-
-a:hover {
-	color: #3486eb;
-}
-
 .event-id {
 	display: none;
+}
+.employee-list {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+}
+.employee-list-item {
+	list-style: none;
+	padding: 15px !important;
+	font-size: 18px !important;
 }

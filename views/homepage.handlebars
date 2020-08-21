@@ -1,13 +1,9 @@
-<ol class="post-list calendar-list">
+<ol class="row employee-list">
 {{#each employees}}
-  <li>
-    <article class="post calendar">
-      <div class="meta">
-        {{firstname}} {{lastname}}
-        -
-        <a href="/calendar/{{calendar.id}}"> View Calendar</a>
+  <li class='card-panel orange white-text col s12 m12 l12 employee-list-item'>
+      <div>
+        {{firstname}} {{lastname}}<a class="right white-text light-blue btn-small" href="/dashboard/{{employee.id}}"><i class="material-icons left">perm_contact_calendar</i> View Calendar</a>
       </div>
-    </article>
   </li>
 {{/each}}
 </ol>
