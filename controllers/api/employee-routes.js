@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
 		.then((dbEmployeeData) => {
 			Calendar.create({
 				employee_id: dbEmployeeData.id,
-				date: `${new Date().getMonth()}/${new Date().getDay()}/${new Date().getFullYear()}`,
+				date: new Date().toISOString().slice(0, 10),
 			});
 			req.session.employee_id = dbEmployeeData.id;
 			req.session.email = dbEmployeeData.email;
