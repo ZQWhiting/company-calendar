@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Calendar</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <header>
+    <nav class="light-blue lighten-1 nav-list">
+      <ul class="nav-links">
+          <li><a class="logo" href="/">Company Calendar</a></li>
+          {{#if loggedIn}}
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><button id="logout" class="btn-no-style">Logout</button></li>
+          {{else}}
+          <li><a href="/login">Login</a></li>
+          {{/if}}
+      </ul>
+    </nav>
+  </header>
+
+  <div class="wrapper">
+    <main>
+      {{{ body }}}
+    </main>
+  </div>
+  
+  <footer>
+    Thanks for using Company Calendar!
+  </footer>
+
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

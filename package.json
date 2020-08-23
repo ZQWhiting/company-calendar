@@ -1,0 +1,24 @@
+{
+	"name": "company-calendar",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest",
+		"start": "node server.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^5.0.0",
+		"connect-session-sequelize": "^7.0.1",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"express-handlebars": "^5.1.0",
+		"express-session": "^1.17.1",
+		"jest": "^26.4.1",
+		"mysql2": "^2.1.0",
+		"sequelize": "^6.3.4"
+	}
+}

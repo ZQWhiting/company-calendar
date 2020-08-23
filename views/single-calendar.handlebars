@@ -1,0 +1,23 @@
+<article class="calendar">
+  <div class="title">
+    <h2>Employee's Schedule</h2>
+  </div>
+  <div>
+    {{#each calendar.events}}
+    <div class="event-form">
+      <h4>{{title}}</h4>
+      <p class="event-id">{{id}}</p>
+      <p>{{description}}</p>
+      <p>{{format_date date}}</p>
+      <p>{{start_time}} {{end_time}} {{employee.firstname}}</p>
+      {{#if (user_authentication ../user_id ../calendar.employee_id)}}
+      <button type="submit" class="delete-event-btn" data-id={{id}}>Delete</button>
+      {{/if}}
+    </div>
+    {{/each}}
+  </div>
+</article>
+
+{{#if (user_authentication user_id calendar.employee_id)}}
+<script src="/javascript/delete-event.js"></script>
+{{/if}}
