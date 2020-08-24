@@ -44,5 +44,4 @@ No installation needed.  Just utilize the website link provided.
 ## **QUESTIONS**  
 Please contact us for any inquiries!  
 | Reach Out | 
-| :------: | :------: |  :------: |  
-| <ricefamily1003@gmail.com> <k_morter@outlook.com> <zach.whiting@icloud.com>|
+| <ricefamily1003@gmail.com> | <k_morter@outlook.com> | <zach.whiting@icloud.com |  
