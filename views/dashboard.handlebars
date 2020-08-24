@@ -1,35 +1,43 @@
-<h2 class="orange-text">Calendars</h2>
+<div class='calendar-heading'>
+<h1 class="orange-text">{{employee.firstname}} {{employee.lastname}}'s Dashboard</h1>
+</div>
+
+{{#unless employee.calendars}}
+{{else}}
+<h2 class="orange-text">Day Calendars</h2>
 <div>
     {{#each employee.calendars}}
     <div class="item">
-        <h3>{{format_date date}} <button type="submit" class="delete-calendar-btn right btn-small light-blue" data-id={{id}}>Delete
-                Calendar</button></h3>
+        <h3 class="calendar-date">{{format_date_long date}}</h3>
         {{#if events}}
         <h4>Events:</h4>
-        <div class="event">
         {{#each events}}
-        <p>{{title}} <button type="submit" class="delete-event-btn btn-small red right" data-id={{id}}>Delete Event</button></p>
-        <p>Description: {{description}}</p>
-        <p>Time: {{start_time}}-{{end_time}}</p>
-        {{/each}}
+        <div class="event">
+            <p class="event-title">{{title}}</p>
+            <p class="event-description">{{description}}</p>
+            <p>When: {{start_time}}-{{end_time}}</p>
+            <button type="submit" class="delete-event-btn btn-small red" data-id={{id}}>Delete Event</button>
         </div>
+           {{/each}}
         {{/if}}
+         <button type="submit" class="delete-calendar-btn btn-small light-blue" data-id={{id}}>Delete Calendar</button>
     </div>
     {{/each}}
 </div>
+{{/unless}}
 
-<h2 class="orange-text">Add Calendar</h2>
+<h2 class="orange-text">Add Day Calendar</h2>
 <form class='item add-calendar-form'>
     <div>
         <h4>Date</h4>
         <input type="date" name="calendar-date">
     </div>
     <div>
-        <button class="btn-small light-blue">Add Date</button>
+        <button class="btn-small light-blue">Add Calendar</button>
     </div>
 </form>
 
-<h2 class="orange-text">Add Event</h2>
+<h2 class="orange-text">Add Event to Calendar</h2>
 <form class="add-event-form form">
     <div>
         <h4>Title</h4>
@@ -39,13 +47,13 @@
         <h4>Calendar</h4>
         <select class="browser-default" name="event-calendar">
             {{#each employee.calendars}}
-            <option value="{{id}}">{{format_date date}}</option>
+            <option value="{{id}}">{{format_date_short date}}</option>
             {{/each}}
         </select>
         <h4>Start Time</h4>
-        <input name="event-start_time">
+        <input type="time" name="event-start_time">
         <h4>End Time</h4>
-        <input name="event-end_time">
+        <input type="time" name="event-end_time">
         <br>
     </div>
     <div>

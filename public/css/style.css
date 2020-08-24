@@ -21,6 +21,12 @@ html {
 	font-size: 18px;
 	font-weight: 900;
 }
+
+h1 {
+	font-size: 36px;
+	font-weight: 900;
+}
+
 h2 {
 	font-size: 28px;
 }
@@ -42,14 +48,6 @@ p {
 	padding: 20px;
 	border: 1px solid lightgrey;
 	border-radius: 5px;
-}
-
-.event {
-	padding: 15px;
-	border-top: 1px solid lightgrey;
-	border-bottom: 1px solid lightgrey;
-	font-style: italic;
-	margin-top: 15px;
 }
 
 textarea,
@@ -109,6 +107,11 @@ main {
 	background-color: #d41414;
 }
 
+.delete-calendar-btn {
+	margin-top: 25px;
+	margin-bottom: 15px;
+}
+
 .calendar .title span {
 	font-style: italic;
 	font-size: 90%;
@@ -142,9 +145,49 @@ h4 {
 	padding: 20px;
 }
 
+.calendar-date {
+	font-size: 28px;
+}
+
+.calendar-list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.calendar-item {
+	margin-left: 15px;
+	margin-right: 15px;
+	padding: 20px !important;
+}
+
+.event {
+	display: inline-block;
+	width: 100%;
+	padding: 15px;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+	margin-top: 15px;
+}
+
 .event-id {
 	display: none;
 }
+
+.event-date {
+	font-size: 24px;
+	font-weight: 900; 
+	border: 1px, solid, lightgrey;
+}
+
+.event-title {
+	font-weight: 900;
+	font-size: 20px; 
+}
+
+.event-description {
+	font-style: italic;
+}
+
 .employee-list {
 	display: flex;
 	flex-wrap: wrap;

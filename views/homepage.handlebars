@@ -1,9 +1,13 @@
 <ol class="row employee-list">
-{{#each employees}}
-  <li class='card-panel orange white-text col s12 m12 l12 employee-list-item'>
-      <div>
-        {{firstname}} {{lastname}}<a class="right white-text light-blue btn-small" href="/dashboard/{{employee.id}}"><i class="material-icons left">perm_contact_calendar</i> View Calendar</a>
-      </div>
-  </li>
+{{#each employees as | employee |}}
+
+{{> employee-info employee}}
+
+{{else}}
+{{#if loggedIn}}
+{{else}}
+<h2>There are no calendars yet! <a href="/login">Login</a> or <a href="/login">sign-up</a> to write the first one!</h2>
+{{/if}}
+
 {{/each}}
 </ol>

@@ -1,0 +1,25 @@
+<article class="calendar">
+  <div class="title">
+    <h2>{{employee.firstname}} {{employee.lastname}}'s Schedule</h2>
+  </div>
+
+  {{#if employee.calendars}}
+  <div class="calendar-list">
+    {{#each employee.calendars}}
+    <div class="event-form event calendar-item">
+      <h4 class="event-date orange-text">{{format_date_long date}}</h4>
+      {{#each events}}
+      <div class="event">
+        <h4 class="event-title">{{title}}</h4>
+        <p class="event-id">{{id}}</p>
+        <p class='event-description'>{{description}}</p>
+        <p>{{start_time}}-{{end_time}}</p>
+      </div>
+      {{/each}}
+    </div>
+    {{/each}}
+  </div>
+  {{else}}
+    <p class="red-text">No events scheduled!</p>
+  {{/if}}
+</article>
