@@ -32,7 +32,11 @@
   </div>
   
   <footer>
+    {{#if loggedIn}}
+    Welcome {{employee.firstname}} {{employee.lastname}}!
+    {{else}}
     Thanks for using Company Calendar!
+    {{/if}}
   </footer>
 
   {{#if loggedIn}}

@@ -19,21 +19,11 @@ router.get('/', (req, res) => {
 		const employee = dbEmployeeData.get({ plain: true });
 		console.log(employee);
 
-		if (!employee.calendars.length) {
-			Calendar.create({
-				employee_id: req.session.employee_id,
-				date: new Date().toISOString().slice(0, 10),
-			}).then(() => {
-				res.redirect('/dashboard');
-			});
-			return;
-		}
-
 		res.render('dashboard', {
 			employee,
-			loggedIn: req.session.loggedIn,
-		});
-	});
-});
+            loggedIn: req.session.loggedIn,
+        })
+	})
+})
 
 module.exports = router;

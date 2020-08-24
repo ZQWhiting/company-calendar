@@ -53,22 +53,22 @@ router.post('/', (req, res) => {
 		email: req.body.email,
 		password: req.body.password,
 	})
-		.then((dbEmployeeData) => {
-			Calendar.create({
-				employee_id: dbEmployeeData.id,
-				date: new Date().toISOString().slice(0, 10),
-			});
-			req.session.employee_id = dbEmployeeData.id;
-			req.session.email = dbEmployeeData.email;
-			req.session.loggedIn = true;
-			req.session.save(() => {
-				res.json(dbEmployeeData);
-			});
-		})
-		.catch((err) => {
-			console.log(err);
-			res.status(500).json(err);
+	.then((dbEmployeeData) => {
+		Calendar.create({
+			employee_id: dbEmployeeData.id,
+			date: new Date().toISOString().slice(0, 10)
 		});
+		req.session.employee_id = dbEmployeeData.id;
+		req.session.email = dbEmployeeData.email;
+		req.session.loggedIn = true;
+		req.session.save(() => {
+			res.json(dbEmployeeData);
+		});
+	})
+	.catch((err) => {
+		console.log(err);
+		res.status(500).json(err);
+	});
 });
 
 // POST /api/employee/login
