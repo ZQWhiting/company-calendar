@@ -20,7 +20,11 @@ async function calendarFormHandler(event) {
 		if (response.ok) {
 			document.location.reload();
 		} else {
-			alert(response.statusText);
+			if (response.errors) {
+				alert(response.errors[0].message);
+			} else {
+				alert(response.statusText);
+			}
 		}
 	}
 }
