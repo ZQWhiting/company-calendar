@@ -15,7 +15,7 @@ module.exports = {
 		month[11] = 'December';
 
 		return `
-		${month[new Date(date).getMonth()]}, ${new Date(date).getDate() + 1} ${new Date(
+		${month[new Date(date).getMonth()]}, ${new Date(date).getDate()} ${new Date(
 			date
 		).getFullYear()}`;
 	},
