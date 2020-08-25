@@ -31,9 +31,13 @@ module.exports = {
 		AMorPM = 'AM';
 
 		time = time.split(':');
-		if (time[0] >= 12) {
+		if (time[0] > 12) {
 			time[0] -= 12;
 			AMorPM = 'PM';
+		} else if (time[0] == 12) {
+			AMorPM = 'PM';
+		} else if (time[0] == 0) {
+			time[0] = '12';
 		}
 
 		return `${time[0]}:${time[1]} ${AMorPM}`;
