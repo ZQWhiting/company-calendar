@@ -12,14 +12,14 @@
       <div class="event">
         <h4 class="event-title">{{title}}</h4>
         <p class="event-id">{{id}}</p>
+        <p>{{format_time start_time}} - {{format_time end_time}}</p>
         <p class='event-description'>{{description}}</p>
-        <p>{{start_time}}-{{end_time}}</p>
       </div>
       {{/each}}
     </div>
     {{/each}}
   </div>
   {{else}}
-    <p class="red-text">No events scheduled!</p>
+  <p class="red-text">No events scheduled!</p>
   {{/if}}
 </article>

@@ -1,5 +1,5 @@
 <div class='calendar-heading'>
-<h1 class="orange-text">{{employee.firstname}} {{employee.lastname}}'s Dashboard</h1>
+    <h1 class="orange-text">{{employee.firstname}} {{employee.lastname}}'s Dashboard</h1>
 </div>
 
 {{#unless employee.calendars}}
@@ -14,13 +14,13 @@
         {{#each events}}
         <div class="event">
             <p class="event-title">{{title}}</p>
+            <p>{{format_time start_time}} - {{format_time end_time}}</p>
             <p class="event-description">{{description}}</p>
-            <p>When: {{start_time}}-{{end_time}}</p>
             <button type="submit" class="delete-event-btn btn-small red" data-id={{id}}>Delete Event</button>
         </div>
-           {{/each}}
+        {{/each}}
         {{/if}}
-         <button type="submit" class="delete-calendar-btn btn-small light-blue" data-id={{id}}>Delete Calendar</button>
+        <button type="submit" class="delete-calendar-btn btn-small light-blue" data-id={{id}}>Delete Calendar</button>
     </div>
     {{/each}}
 </div>
