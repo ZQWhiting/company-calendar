@@ -14,10 +14,10 @@ Calendar.init(
 		date: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			unique: true,
 			validate: {
 				isDate: true,
 			},
+			unique: 'employee_date',
 		},
 		employee_id: {
 			type: DataTypes.INTEGER,
@@ -26,6 +26,7 @@ Calendar.init(
 				model: 'employee',
 				key: 'id',
 			},
+			unique: 'employee_date',
 		},
 	},
 	{
